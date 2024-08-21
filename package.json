@@ -1,7 +1,7 @@
 {
-    "name": "@danny270793/jmixclientv2",
+    "name": "@danny270793/jmixclientv1",
     "version": "1.0.0",
-    "description": "jmix rest api client version 2",
+    "description": "jmix rest api client for jmix v1",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
     "files": [
@@ -31,7 +31,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/danny270793/NodeJmixClient"
+        "url": "git+https://github.com/danny270793/NodeJmixClientV1"
     },
     "license": "MIT",
     "dependencies": {
