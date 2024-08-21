@@ -1,8 +1,8 @@
 import DotEnv from 'dotenv'
 DotEnv.config()
 
-import JmixClient from '..'
-import User from '../entities/user'
+import JmixClient from '../src'
+import User from '../src/entities/user'
 
 const protocol: string = process.env.JMIX_PROTOCOL || ''
 const hostname: string = process.env.JMIX_HOSTNAME || ''
