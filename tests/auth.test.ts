@@ -13,23 +13,19 @@ const clientId: string = process.env.JMIX_CLIENT_ID || ''
 const clientSecret: string = process.env.JMIX_CLIENT_SECRET || ''
 
 describe('getAccessTokens function', () => {
-    it(
-        'getAccessTokens must return access tokens from the rest client',
-        async () => {
-            const jmixClient: JmixClient = new JmixClient(
-                protocol,
-                hostname,
-                port,
-                username,
-                password,
-                clientId,
-                clientSecret,
-            )
-            const loginResponse: LoginResponse =
-                await jmixClient.getAccessTokens()
-            assert.equal(loginResponse.accessToken, undefined)
-        },
-    )
+    it('getAccessTokens must return access tokens from the rest client', async () => {
+        const jmixClient: JmixClient = new JmixClient(
+            protocol,
+            hostname,
+            port,
+            username,
+            password,
+            clientId,
+            clientSecret,
+        )
+        const loginResponse: LoginResponse = await jmixClient.getAccessTokens()
+        assert.equal(loginResponse.accessToken, undefined)
+    })
     /*
     test.concurrent(
         'getAccessTokens must fail because credentials are invalid',
