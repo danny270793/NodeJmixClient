@@ -1,0 +1,24 @@
+{
+    "transform": {
+        "^.+\\.(t|j)sx?$": "ts-jest"
+    },
+    "moduleFileExtensions": ["ts", "js"],
+    "reporters": [
+        "default",
+        [
+            "jest-junit",
+            {
+                "outputDirectory": "reports/junit",
+                "classNameTemplate": "{classname}",
+                "titleTemplate": "{title}"
+            }
+        ],
+        [
+            "jest-html-reporters",
+            {
+                "publicPath": "reports/html",
+                "expand": true
+            }
+        ]
+    ]
+}
