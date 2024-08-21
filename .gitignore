@@ -1,8 +1,4 @@
+node_modules
 build
 docs
 logs
-node_modules
-reports
-public
-
-.env
