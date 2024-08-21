@@ -20,7 +20,7 @@ Library to comunicate with jmix 2.x rest api
 Install package from public registry
 
 ```bash
-npm install @danny270793/jmixclient
+npm install @danny270793/jmixclientv2
 ```
 
 ## Examples
@@ -28,8 +28,8 @@ npm install @danny270793/jmixclient
 Compute the levenshtein distance between two strings
 
 ```ts
-import JmixClient from '@danny270793/jmixclient'
-import User from '@danny270793/build/entities/user'
+import JmixClient from '@danny270793/jmixclientv2'
+import User from '@danny270793/jmixclientv2/build/entities/user'
 
 const protocol: string = process.env.JMIX_PROTOCOL || ''
 const hostname: string = process.env.JMIX_HOSTNAME || ''
@@ -39,9 +39,7 @@ const password: string = process.env.JMIX_PASSWORD || ''
 const clientId: string = process.env.JMIX_CLIENT_ID || ''
 const clientSecret: string = process.env.JMIX_CLIENT_SECRET || ''
 
-import Levenshtein from '@danny270793/levenshtein'
-
- const jmixClient: JmixClient = new JmixClient(
+const jmixClient: JmixClient = new JmixClient(
     protocol,
     hostname,
     port,

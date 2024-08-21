@@ -1,5 +1,5 @@
 {
-    "name": "@danny270793/jmix-client-v2",
+    "name": "@danny270793/jmixclientv2",
     "version": "1.0.0",
     "description": "jmix rest api client version 2",
     "main": "./build/index.js",
