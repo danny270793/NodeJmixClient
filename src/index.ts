@@ -41,7 +41,7 @@ export default class JmixClient {
         username: string,
         password: string,
         clientId: string,
-        clientSecret: string
+        clientSecret: string,
     ) {
         this.protocol = protocol
         this.hostname = hostname
@@ -72,9 +72,8 @@ export default class JmixClient {
                 grant_type: 'password',
             },
         }
-        const response: AxiosResponse = await this.executeWithoutRetries(
-            request
-        )
+        const response: AxiosResponse =
+            await this.executeWithoutRetries(request)
         return {
             accessToken: response.data['access_token'],
             tokenType: response.data['token_type'],
@@ -118,9 +117,8 @@ export default class JmixClient {
                     grant_type: 'refresh_token',
                 },
             }
-            const response: AxiosResponse = await this.executeWithoutRetries(
-                request
-            )
+            const response: AxiosResponse =
+                await this.executeWithoutRetries(request)
             return {
                 accessToken: response.data['access_token'],
                 tokenType: response.data['token_type'],
@@ -132,7 +130,7 @@ export default class JmixClient {
             if (error.response) {
                 if (
                     error.response.data.error_description?.indexOf(
-                        'Invalid refresh token'
+                        'Invalid refresh token',
                     ) >= 0
                 ) {
                     return await this.getAccessTokens()
@@ -166,7 +164,7 @@ export default class JmixClient {
         sort: string | undefined = undefined,
         returnNulls: boolean | undefined = undefined,
         returnCount: boolean | undefined = undefined,
-        dynamicAttributes: boolean | undefined = undefined
+        dynamicAttributes: boolean | undefined = undefined,
     ): Promise<T[]> {
         const request: AxiosRequestConfig = {
             method: 'get',
@@ -190,7 +188,7 @@ export default class JmixClient {
 
     async createEntity<T extends BaseResponse>(
         entity: string,
-        payload: Partial<T>
+        payload: Partial<T>,
     ): Promise<T> {
         const request: AxiosRequestConfig = {
             method: 'post',
@@ -206,7 +204,7 @@ export default class JmixClient {
 
     async deleteEntity<T extends BaseResponse>(
         entity: string,
-        id: string
+        id: string,
     ): Promise<T> {
         const request: AxiosRequestConfig = {
             method: 'delete',
@@ -215,9 +213,8 @@ export default class JmixClient {
                 Authorization: `Bearer ${this.loginResponse?.accessToken}`,
             },
         }
-        const response: AxiosResponse<T> = await this.executeWithRetries(
-            request
-        )
+        const response: AxiosResponse<T> =
+            await this.executeWithRetries(request)
         return response.data
     }
 
@@ -226,7 +223,7 @@ export default class JmixClient {
         id: string,
         view: string | undefined = undefined,
         returnNulls: boolean | undefined = undefined,
-        dynamicAttributes: boolean | undefined = undefined
+        dynamicAttributes: boolean | undefined = undefined,
     ): Promise<T> {
         const request: AxiosRequestConfig = {
             method: 'get',
@@ -247,7 +244,7 @@ export default class JmixClient {
     async updateEntity<T extends BaseResponse>(
         entity: string,
         id: string,
-        payload: Partial<T>
+        payload: Partial<T>,
     ): Promise<T> {
         const request: AxiosRequestConfig = {
             method: 'put',
@@ -270,7 +267,7 @@ export default class JmixClient {
         sort: string | undefined = undefined,
         returnNulls: boolean | undefined = undefined,
         returnCount: boolean | undefined = undefined,
-        dynamicAttributes: boolean | undefined = undefined
+        dynamicAttributes: boolean | undefined = undefined,
     ): Promise<T[]> {
         const request: AxiosRequestConfig = {
             method: 'post',
@@ -303,9 +300,8 @@ export default class JmixClient {
                 Authorization: `Bearer ${this.loginResponse?.accessToken}`,
             },
         }
-        const response: AxiosResponse<Query[]> = await this.executeWithRetries(
-            request
-        )
+        const response: AxiosResponse<Query[]> =
+            await this.executeWithRetries(request)
         return response.data
     }
 
@@ -318,7 +314,7 @@ export default class JmixClient {
         offset: number | undefined = undefined,
         returnNulls: boolean | undefined = undefined,
         returnCount: boolean | undefined = undefined,
-        dynamicAttributes: boolean | undefined = undefined
+        dynamicAttributes: boolean | undefined = undefined,
     ): Promise<T[]> {
         const request: AxiosRequestConfig = {
             method: 'post',
@@ -336,16 +332,15 @@ export default class JmixClient {
                 Authorization: `Bearer ${this.loginResponse?.accessToken}`,
             },
         }
-        const response: AxiosResponse<T[]> = await this.executeWithRetries(
-            request
-        )
+        const response: AxiosResponse<T[]> =
+            await this.executeWithRetries(request)
         return response.data
     }
 
     async executeService<T, U>(
         className: string,
         method: string,
-        payload: U
+        payload: U,
     ): Promise<T> {
         const request: AxiosRequestConfig = {
             method: 'post',
@@ -392,9 +387,8 @@ export default class JmixClient {
                 Authorization: `Bearer ${this.loginResponse?.accessToken}`,
             },
         }
-        const response: AxiosResponse<Stream> = await this.executeWithRetries(
-            request
-        )
+        const response: AxiosResponse<Stream> =
+            await this.executeWithRetries(request)
         return response.data
     }
 
@@ -419,7 +413,7 @@ export default class JmixClient {
     async uploadFileFromBuffer(
         content: Buffer,
         name: string | undefined = undefined,
-        contentType: string = 'image/jpeg'
+        contentType: string = 'image/jpeg',
     ): Promise<CreateFileResponse> {
         const request: AxiosRequestConfig = {
             method: 'post',
@@ -443,7 +437,7 @@ export default class JmixClient {
      * @returns the response received from the CUBA REST API
      */
     protected async executeAxiosAndLog(
-        axiosRequestConfig: AxiosRequestConfig
+        axiosRequestConfig: AxiosRequestConfig,
     ): Promise<AxiosResponse> {
         try {
             Logger.debug({
@@ -474,13 +468,13 @@ export default class JmixClient {
     }
 
     protected async executeWithoutRetries(
-        request: AxiosRequestConfig
+        request: AxiosRequestConfig,
     ): Promise<AxiosResponse> {
         return await this.executeAxiosAndLog(request)
     }
 
     protected async executeWithRetries(
-        request: AxiosRequestConfig
+        request: AxiosRequestConfig,
     ): Promise<AxiosResponse> {
         if (this.loginResponse === undefined) {
             this.loginResponse = await this.getAccessTokens()
@@ -494,7 +488,7 @@ export default class JmixClient {
             if (error.response) {
                 if (
                     error.response.data.error_description?.indexOf(
-                        'Invalid access token'
+                        'Invalid access token',
                     ) >= 0
                 ) {
                     this.loginResponse = await this.refreshAccessTokens()

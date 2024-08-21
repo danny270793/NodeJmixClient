@@ -23,7 +23,7 @@ describe('updateEntity function', () => {
                 username,
                 password,
                 clientId,
-                clientSecret
+                clientSecret,
             )
             const toBeUpdatedUsers: User[] =
                 await jmixClient.searchEntity<User>('User', [
@@ -58,9 +58,9 @@ describe('updateEntity function', () => {
 
             const updatedUser: User = await jmixClient.getEntity(
                 'User',
-                user.id
+                user.id,
             )
             expect(updatedUser.username).toBe('alreadyBeUpdated')
-        }
+        },
     )
 })

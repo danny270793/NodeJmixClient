@@ -21,7 +21,7 @@ describe('deleteEntity function', () => {
             username,
             password,
             clientId,
-            clientSecret
+            clientSecret,
         )
         const users: User[] = await jmixClient.searchEntity<User>('User', [
             {

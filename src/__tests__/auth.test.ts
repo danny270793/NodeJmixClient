@@ -23,12 +23,12 @@ describe('getAccessTokens function', () => {
                 username,
                 password,
                 clientId,
-                clientSecret
+                clientSecret,
             )
             const loginResponse: LoginResponse =
                 await jmixClient.getAccessTokens()
             expect(loginResponse.accessToken).not.toBeUndefined()
-        }
+        },
     )
     test.concurrent(
         'getAccessTokens must fail because credentials are invalid',
@@ -40,17 +40,17 @@ describe('getAccessTokens function', () => {
                 'username',
                 'password',
                 clientId,
-                clientSecret
+                clientSecret,
             )
             try {
                 await jmixClient.getAccessTokens()
                 throw Error('getAccessTokens must not works successfully')
             } catch (error: any) {
                 expect(error.response.data.error_description).toBe(
-                    'Bad credentials'
+                    'Bad credentials',
                 )
             }
-        }
+        },
     )
 })
 

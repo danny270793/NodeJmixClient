@@ -21,7 +21,7 @@ describe('getEntities function', () => {
             username,
             password,
             clientId,
-            clientSecret
+            clientSecret,
         )
         const users: User[] = await jmixClient.getEntities<User>('User')
         expect(users.length).toBeGreaterThanOrEqual(0)
@@ -54,15 +54,15 @@ describe('getEntities function', () => {
                 username,
                 password,
                 clientId,
-                clientSecret
+                clientSecret,
             )
             const users: any[] = await jmixClient.getEntities(
                 'User',
                 undefined,
-                limit
+                limit,
             )
             expect(users.length).toBe(limit)
-        }
+        },
     )
 
     test.concurrent(
@@ -75,7 +75,7 @@ describe('getEntities function', () => {
                 username,
                 password,
                 clientId,
-                clientSecret
+                clientSecret,
             )
             const users: any[] = await jmixClient.getEntities(
                 'User',
@@ -83,10 +83,10 @@ describe('getEntities function', () => {
                 undefined,
                 undefined,
                 undefined,
-                true
+                true,
             )
             expect(users[0]['firstName']).toBeNull()
-        }
+        },
     )
 })
 
@@ -101,16 +101,16 @@ describe('getEntity function', () => {
                 username,
                 password,
                 clientId,
-                clientSecret
+                clientSecret,
             )
 
             const user: User[] = await jmixClient.getEntities<User>('User')
             const data: User = await jmixClient.getEntity<User>(
                 'User',
-                user[0].id
+                user[0].id,
             )
             expect(data['_entityName']).toBe('User')
-        }
+        },
     )
 })
 
@@ -123,7 +123,7 @@ describe('searchEntity function', () => {
             username,
             password,
             clientId,
-            clientSecret
+            clientSecret,
         )
 
         const users: User[] = await jmixClient.searchEntity<User>('User', [
@@ -144,7 +144,7 @@ describe('searchEntity function', () => {
             username,
             password,
             clientId,
-            clientSecret
+            clientSecret,
         )
         const users: User[] = await jmixClient.searchEntity<User>('User', [
             {
@@ -154,7 +154,7 @@ describe('searchEntity function', () => {
                         property: 'username',
                         operator: '=',
                         value: 'admin',
-                    }
+                    },
                 ],
             },
         ])
@@ -169,7 +169,7 @@ describe('searchEntity function', () => {
             username,
             password,
             clientId,
-            clientSecret
+            clientSecret,
         )
         const users: User[] = await jmixClient.searchEntity<User>(
             'User',
@@ -191,7 +191,7 @@ describe('searchEntity function', () => {
                 },
             ],
             undefined,
-            1
+            1,
         )
         expect(users.length).toBe(1)
     })

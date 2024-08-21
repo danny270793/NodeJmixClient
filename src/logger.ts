@@ -29,9 +29,9 @@ const format: LogForm.Format = Winston.format.combine(
                 message: info.message,
             },
             jsonReplacer,
-            logsExpanded ? 4 : 0
+            logsExpanded ? 4 : 0,
         )
-    })
+    }),
 )
 
 const transports: Winston.transport[] = [

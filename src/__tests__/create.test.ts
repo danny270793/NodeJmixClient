@@ -23,13 +23,13 @@ describe('createEntity function', () => {
                 username,
                 password,
                 clientId,
-                clientSecret
+                clientSecret,
             )
 
             const data: User = await jmixClient.createEntity<User>('User', {
                 username: `_test_${Date.now()}`,
             })
             expect(data['id']).not.toHaveLength(0)
-        }
+        },
     )
 })
